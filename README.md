@@ -1,7 +1,7 @@
 # :computer: CP-Algorithms
 
 My solutions to [competitive programming algorithms](https://cp-algorithms.com/) problems.
-Question link is commented on at the first line of each file.
+Question link is commented at the first line of each file.
 
 ## :heartpulse: Contribute
 
