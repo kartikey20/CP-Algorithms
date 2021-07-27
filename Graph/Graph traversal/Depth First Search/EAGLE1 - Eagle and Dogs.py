@@ -1,6 +1,8 @@
 # https: // www.spoj.com/problems/EAGLE1/
 
 # [[], [2, 3], [3, 4], [4, 5], []]
+from itertools import accumulate
+
 
 def solve(graph, dist, n):
     # dfs using stack
@@ -21,18 +23,16 @@ def solve(graph, dist, n):
             else:
                 stack.pop()
                 # base case
-                print(start)
-                dp[start] = dist[start]
+                dp[start] += dist[start]
 
                 # update with finished children
                 for child in graph[start]:
                     if finished[child]:
-                        print(dp)
                         dp[start] += dp[child]
                 finished[start] = True
-
         return dp
-    return dfs(graph, dist, n)
+    down = dfs(graph, dist, n)[1:]
+    return list(accumulate(down, lambda self, x: down[0] - x if down[0] - x > x else x))
 
 
 T = int(input())
