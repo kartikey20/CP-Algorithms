@@ -32,17 +32,25 @@ def solve(graph, dist, n):
                 finished[start] = True
         return dp
     down = dfs(graph, dist, n)[1:]
-    return list(accumulate(down, lambda self, x: down[0] - x if down[0] - x > x else x))
+    return ' '.join(map(str, accumulate(down, lambda self,
+                                        x: down[0] - x if down[0] - x > x else x)))
 
 
-T = int(input())
-res = []
-for i in range(T):
-    n = int(input())
-    graph = [[] for _ in range(n + 1)]
-    dist = [0] * (n + 1)
-    for i in range(1, n):
-        u, v, d = map(int, input().split())
-        graph[min(u, v)].append(max(u, v))
-        dist[i] = d
-    print(solve(graph, dist, n))
+try:
+    T = int(input())
+    res = []
+    for i in range(T):
+        n = int(input())
+        graph = [[] for _ in range(n + 1)]
+        dist = [0] * (n + 1)
+        for i in range(1, n):
+            u, v, d = map(int, input().split())
+            graph[min(u, v)].append(max(u, v))
+            dist[i] = d
+        res.append(solve(graph, dist, n))
+
+    for x in res:
+        print(x)
+
+except:
+    print(end="")
