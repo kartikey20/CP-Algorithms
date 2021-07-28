@@ -5,7 +5,7 @@ def computeHash(s):
     mod = 1e9 + 9
     pPow = 1
     for c in s:
-        hash = (hash + (ord(c) - ord('a') + 1) * pPow) % mod
+        hash = (hash + (ord(c) * pPow)) % mod
         pPow = (pPow * p) % mod
     return int(hash)
 
