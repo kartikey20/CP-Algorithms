@@ -27,15 +27,15 @@ def solve(arr, n, m):
 
 res = []
 while True:
-    H, W = map(int, input().split())
-    arr = []
-    count = 0
-    for _ in range(H):
-        arr.append(list(input()))
-    if all(map(int, input().split())) == 0:
-        count += 1
-        res.append(f"Case {count}: {solve(arr, H, W)}")
+    line = input()
+    if line == "0 0":
         break
+    else:
+        H, W = map(int, line.split())
+        arr = []
+        for _ in range(H):
+            arr.append(input())
+        res.append(solve(arr, H, W))
 
-for x in res:
-    print(x)
+for i in range(len(res)):
+    print(f"Case {i + 1}: {res[i]}")

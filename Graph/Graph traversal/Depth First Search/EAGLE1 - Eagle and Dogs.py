@@ -36,17 +36,20 @@ def solve(graph, dist, n):
                                         x: down[0] - x if down[0] - x > x else x)))
 
 
-T = int(input())
 res = []
-for i in range(T):
-    n = int(input())
-    graph = [[] for _ in range(n + 1)]
-    dist = [0] * (n + 1)
-    for i in range(1, n):
-        u, v, d = map(int, input().split())
-        graph[min(u, v)].append(max(u, v))
-        dist[i] = d
-    res.append(solve(graph, dist, n))
-
-for x in res:
-    print(x)
+while True:
+    try:
+        T = int(input())
+        for i in range(T):
+            n = int(input())
+            graph = [[] for _ in range(n + 1)]
+            dist = [0] * (n + 1)
+            for i in range(1, n):
+                u, v, d = map(int, input().split())
+                graph[min(u, v)].append(max(u, v))
+                dist[i] = d
+            res.append(solve(graph, dist, n))
+    except:
+        break
+    for x in res:
+        print(x)

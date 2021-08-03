@@ -1,4 +1,5 @@
 # https://codeforces.com/problemset/problem/580/C
+# [[], [2, 3], [4, 5], [6, 7], [], [], [], []]
 
 def dfs(graph, a, n, m, start=1):
     stack = [start]
@@ -15,10 +16,11 @@ def dfs(graph, a, n, m, start=1):
                 if not visited[child]:
                     stack.append(child)
         else:
+            print(stack)
             stack.pop()
 
             # base case
-            dp[start] += 1
+            dp[start] += a[start]
 
             # update with finished children
             for child in graph[start]:
