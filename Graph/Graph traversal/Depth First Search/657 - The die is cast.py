@@ -1,7 +1,6 @@
 def solve(cols, rows, board):
     arr = []
     visited = [[False for _ in range(cols)] for _ in range(rows)]
-    visited[0][0] = True
 
     def floodFill(row, col, count, previousIsX):
         visited[row][col] = True
@@ -22,8 +21,8 @@ def solve(cols, rows, board):
     for row in range(rows):
         for col in range(cols):
             if board[row][col] == '*' and visited[row][col] == False:
-                count = 0
-                arr.append(floodFill(row, col, count, False))
+                arr.append(floodFill(row, col, 0, False))
+            visited[row][col] = True
 
     return arr
 
