@@ -22,6 +22,7 @@ def solve(w, h, board):
 
 width, height = map(int, input().split())
 matrix = []
-for _ in range(height):
+for i in range(height):
     matrix.append(list(input()))
+_ = map(int, input().split())
 print(solve(width, height, matrix))
