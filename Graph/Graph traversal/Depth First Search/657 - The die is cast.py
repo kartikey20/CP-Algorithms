@@ -1,29 +1,36 @@
-def solve(cols, rows, board, count):
+def solve(cols, rows, board):
+    arr = []
     visited = [[False for _ in range(cols)] for _ in range(rows)]
     visited[0][0] = True
 
-    def dfs(x, y, previousIsX, count):
-        if x == cols and y == rows:
-            return count
-        else:
-            if visited[x][y] == False and x >= 0 and y >= 0 and x < rows and y < cols:
-                visited[x][y] = True
-                if board[x][y] == 'X':
-                    if not previousIsX:
-                        count += 1
-                    previousIsX = True
-                else:
-                    previousIsX = False
-            dfs(x + 1, y, previousIsX, count)
-            dfs(x - 1, y, previousIsX, count)
-            dfs(x, y + 1, previousIsX, count)
-            dfs(x, y - 1, previousIsX, count)
-    return dfs(0, 0, False)
+    def floodFill(row, col, count, previousIsX):
+        visited[row][col] = True
+        if board[row][col] == 'X':
+            if not previousIsX:
+                count += 1
+            previousIsX = True
+        if board[row - 1][col] != '.' and visited[row - 1][col] == False and row - 1 >= 0:
+            floodFill(row - 1, col, count, previousIsX)
+        if board[row + 1][col] != '.' and visited[row + 1][col] == False and row + 1 < rows:
+            floodFill(row + 1, col, count, previousIsX)
+        if board[row][col - 1] != '.' and visited[row][col - 1] == False and col - 1 >= 0:
+            floodFill(row, col - 1, count, previousIsX)
+        if board[row][col + 1] != '.' and visited[row][col + 1] == False and col + 1 < cols:
+            floodFill(row, col + 1, count, previousIsX)
+        return count
+
+    for row in range(rows):
+        for col in range(cols):
+            if board[row][col] == '*' and visited[row][col] == False:
+                count = 0
+                arr.append(floodFill(row, col, count, False))
+
+    return arr
 
 
 cols, rows = map(int, input().split())
 matrix = []
-for i in range(rows):
+for _ in range(rows):
     matrix.append(list(input()))
 _ = map(int, input().split())
 print(solve(cols, rows, matrix))
