@@ -18,13 +18,13 @@ def validate(matrix, m, n):
 
     def dfs(x, y):
         visited[x][y] = True
-        if valid(x + 1, y) and visited[x + 1][y] and matrix[x + 1][y] != '#':
+        if valid(x + 1, y) and visited[x + 1][y] == False and matrix[x + 1][y] != '#':
             dfs(x + 1, y)
-        if valid(x - 1, y) and visited[x - 1][y] and matrix[x - 1][y] != '#':
+        if valid(x - 1, y) and visited[x - 1][y] == False and matrix[x - 1][y] != '#':
             dfs(x - 1, y)
-        if valid(x, y - 1) and visited[x][y - 1] and matrix[x][y - 1] != '#':
+        if valid(x, y - 1) and visited[x][y - 1] == False and matrix[x][y - 1] != '#':
             dfs(x, y - 1)
-        if valid(x, y + 1) and visited[x][y + 1] and matrix[x][y + 1] != "#":
+        if valid(x, y + 1) and visited[x][y + 1] == False and matrix[x][y + 1] != "#":
             dfs(x, y + 1)
 
     dfs(points[0][0], points[0][1])
