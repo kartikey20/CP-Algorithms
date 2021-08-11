@@ -8,6 +8,7 @@
 # ['#.v..v.#'],
 # ['.######.']
 # ]
+
 def valid(x, y, N, M):
     if x >= 0 and x < N and y >= 0 and y < M:
         return True
@@ -60,4 +61,3 @@ for _ in range(N):
             wolves += 1
     matrix.append(temp)
 print(solve(N, M, matrix, sheep, wolves))
-# print(sheep, wolves)
