@@ -26,16 +26,14 @@ def solve(arr, n, m):
 
 
 res = []
-while True:
-    line = input()
-    if line == "0 0":
-        break
-    else:
-        H, W = map(int, line.split())
-        arr = []
-        for _ in range(H):
-            arr.append(input())
-        res.append(solve(arr, H, W))
+H, W = map(int, input().split())
+while H != 0 and W != 0:
+    arr = []
+    for _ in range(H):
+        arr.append(input())
+    res.append(solve(arr, H, W))
+    H, W = map(int, input().split())
+
 
 for i in range(len(res)):
     print(f"Case {i + 1}: {res[i]}")
