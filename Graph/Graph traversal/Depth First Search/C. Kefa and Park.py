@@ -5,25 +5,23 @@
 
 def solve(graph, hasCat, m):
     n = len(graph)
-    visited = [False] * n
-    visited[1] = True
-    arr = []
-    count = hasCat[1]
+    visited = [False] * (n + 1)
+    countPaths = [0]
 
-    def dfs(node, count):
+    def dfs(node, countCats):
+        visited[node] = True
         if graph[node] == []:
-            arr.append(node)
+            countPaths[0] += 1
         for child in graph[node]:
             if not visited[child]:
-                visited[child] = True
                 if hasCat[child] == 1:
-                    count += 1
-                else:
-                    count = 0
-                if count <= m:
-                    dfs(child, count)
-    dfs(1, count)
-    return arr
+                    countCats += 1
+                if hasCat[child] == 0:
+                    countCats = 0
+                if countCats < m:
+                    dfs(child, countCats)
+    dfs(1, 0)
+    return countPaths[0]
 
 
 n, m = map(int, input().split())
@@ -34,3 +32,5 @@ for _ in range(n - 1):
     x, y = map(int, input().split())
     graph[x].append(y)
 print(solve(graph, a, m))
+print(graph)
+print(a)
