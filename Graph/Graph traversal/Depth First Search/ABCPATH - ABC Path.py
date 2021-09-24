@@ -1,10 +1,4 @@
-# https://www.spoj.com/problems/ABCPATH/
-# TODO: EOF error
-# [['ABE'],
-# ['CFG'],
-# ['BDH'],
-# ['ABC']]
-
+# TODO: NOT DONE
 def solve(arr, n, m):
     def dfs(arr, i, j, visited, len):
         for x in range(i - 1, i + 2):
@@ -26,14 +20,14 @@ def solve(arr, n, m):
 
 
 res = []
-H, W = map(int, input().split())
-while H != 0 and W != 0:
+while True:
+    H, W = map(int, input().split())
+    if H == 0 or W == 0:
+        break
     arr = []
     for _ in range(H):
         arr.append(input())
     res.append(solve(arr, H, W))
-    H, W = map(int, input().split())
-
 
 for i in range(len(res)):
     print(f"Case {i + 1}: {res[i]}")
