@@ -1,6 +1,5 @@
 def validate(matrix, m, n):
     visited = [[False for _ in range(n)] for _ in range(m)]
-    print(visited)
     points = []
     for i in range(m):
         for j in range(n):
@@ -11,7 +10,6 @@ def validate(matrix, m, n):
                     points.append([i, j])
 
     points = list(set(map(tuple, points)))
-    print(points)
     if len(points) == 2:
         def valid(x, y):
             if x >= 0 and x < m and y >= 0 and y < n:
@@ -48,5 +46,3 @@ for _ in range(T):
 
 for x in res:
     print(x)
-
-print(matrix)
