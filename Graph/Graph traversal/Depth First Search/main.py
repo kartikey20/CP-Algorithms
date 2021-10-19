@@ -1,4 +1,6 @@
+def solve(S, K):
+    days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    return days[(days.index(S) + K) % 7]
 
-string = "racecar"
-if string == string[::-1]:
-    print("String is a palindrome")
+
+print(solve('Sat', 3))
