@@ -1,26 +1,37 @@
+# TLE
 def solve(graph, n, k):
     res = []
-    limit = 2*n//k
-    visited = [False for _ in range(n)]
-    count = [0]
+    stop = (2*n+k-1)//k
+    visited = [False for _ in range(n+1)]
 
     def dfs(node):
         visited[node] = True
+        res.append(node)
         for i in graph[node]:
             if not visited[i]:
-                res.append(i)
-                count[0] += 1
-                print(count)
-                if count[0] == limit:
-                    print(res)
-                    exit()
                 dfs(i)
-    dfs(0)
+                res.append(node)
+    dfs(1)
+    ans = []
+    count = 0
+    for i in range(k):
+        beg = i * stop
+        ends = min((i+1) * stop, len(res))
+        if ends <= beg:
+            print("1 1\n")
+            continue
+        ans.append([ends-beg])
+        for j in range(beg, ends):
+            ans[count].append(res[j])
+        count += 1
+    for x in ans:
+        print(' '.join(map(str, x)))
 
 
 n, m, k = map(int, input().split())
-graph = [[] for _ in range(n)]
+graph = [[] for _ in range(n+1)]
 for _ in range(m):
     u, v = map(int, input().split())
-    graph[min(u-1, v-1)].append(max(u-1, v-1))
+    graph[u].append(v)
+    graph[v].append(u)
 solve(graph, n, k)
