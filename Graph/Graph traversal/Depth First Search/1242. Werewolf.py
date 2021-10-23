@@ -1,6 +1,7 @@
 # [2, 7]
 # [[2], [], [5], [4, 5], [], [1], [], [0]]
 # TODO: Search Ancestors and descendants of victim nodes
+# 
 def dfs(N, graph, start=1):
     dp = [0] * (N + 1)
     visited, finished = [False] * (N + 1), [False] * (N + 1)

@@ -24,13 +24,13 @@ def dfs(x, y, visited, matrix):
         k[0] += 1
     if matrix[x][y] == 'v':
         v[0] += 1
-    if valid(x + 1, y, N, M) and visited[x + 1][y] == False and matrix[x + 1][y] != '#':
+    if valid(x + 1, y, N, M) and not visited[x + 1][y] and matrix[x + 1][y] != '#':
         dfs(x + 1, y, visited, matrix)
-    if valid(x - 1, y, N, M) and visited[x - 1][y] == False and matrix[x - 1][y] != '#':
+    if valid(x - 1, y, N, M) and not visited[x - 1][y] and matrix[x - 1][y] != '#':
         dfs(x - 1, y, visited, matrix)
-    if valid(x, y + 1, N, M) and visited[x][y + 1] == False and matrix[x][y + 1] != '#':
+    if valid(x, y + 1, N, M) and not visited[x][y + 1] and matrix[x][y + 1] != '#':
         dfs(x, y + 1, visited, matrix)
-    if valid(x, y - 1, N, M) and visited[x][y - 1] == False and matrix[x][y - 1] != '#':
+    if valid(x, y - 1, N, M) and not visited[x][y - 1] and matrix[x][y - 1] != '#':
         dfs(x, y - 1, visited, matrix)
 
 
@@ -38,7 +38,7 @@ def solve(N, M, matrix, sheep, wolves):
     visited = [[False for _ in range(M)] for _ in range(N)]
     for i in range(N):
         for j in range(M):
-            if matrix[i][j] == 'k' and visited[i][j] == False:
+            if matrix[i][j] == 'k' and not visited[i][j]:
                 k[0] = 0
                 v[0] = 0
                 dfs(i, j, visited, matrix)
