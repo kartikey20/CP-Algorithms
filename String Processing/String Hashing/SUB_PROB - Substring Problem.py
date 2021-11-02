@@ -1,4 +1,6 @@
 # https://www.spoj.com/problems/SUB_PROB/
+
+
 def computeHash(s, dic={}):
     if s in dic:
         return dic[s]
