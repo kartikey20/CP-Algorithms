@@ -32,14 +32,16 @@ res = []
 t = int(input())
 for _ in range(t):
     n, m = map(int, input().split())
-    graph = [[] for _ in range(n+2)]
+    graph = [set() for _ in range(n+2)]
     degrees = [0 for _ in range(n+1)]
     for _ in range(m):
         u, v = map(int, input().split())
-        graph[u].append(v)
-        graph[v].append(u)
+        graph[u].add(v)
+        graph[v].add(u)
         degrees[u] += 1
         degrees[v] += 1
+    for i in range(len(graph)):
+        graph[i] = list(graph[i])
     res.append(solve(n, graph, degrees))
 
 for count, edges in res:
