@@ -1,5 +1,5 @@
 def trail_divison(n):
-    fact = []
+    fact = [1]
     for i in range(2, int(n**1/2+1)):
         while n % i == 0:
             fact.append(i)
@@ -9,4 +9,4 @@ def trail_divison(n):
     return fact
 
 
-print(trail_divison(89))
+print(trail_divison(28))

@@ -17,6 +17,7 @@ try:
     for _ in range(t):
         a, b = map(int, input().split())
         res.append(solve(a, b))
+
     for x in res:
         print(x)
 except:
