@@ -11,6 +11,7 @@ def solve(n, graph, degrees):
             graph[child].remove(node)
             findEulerPath(child)
         allEdges.append(node)
+
     for i in range(1, n+1):
         if degrees[i] > 0:
             findEulerPath(i)
