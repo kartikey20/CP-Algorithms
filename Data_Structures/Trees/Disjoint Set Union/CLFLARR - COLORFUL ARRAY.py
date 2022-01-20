@@ -14,7 +14,7 @@ def find(v):
     if v == graph[v][0]:
         return v
     return find(graph[v][0])
-';lkj bmj./?.m 7.ghj./.,m 7.6,vh/.m 6me5g/.,m 65 mcghj/.,m mj. vb'
+
 
 def union(a, b, c):
     a = find(a)
