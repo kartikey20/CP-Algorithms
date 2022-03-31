@@ -9,9 +9,9 @@ k = 10
 count = 0
 for i in range(len(arr)):
     sums += arr[i]
-    start_list = prefix_sum[sums - k]
-    for x in start_list:
+    indices = prefix_sum[sums - k]
+    for x in indices:
         print(x+1, i)
-    start_list2 = prefix_sum[sums]
-    start_list2.append(i)
-    prefix_sum[sums] = start_list2
+    indices = prefix_sum[sums]
+    indices.append(i)
+    prefix_sum[sums] = indices
