@@ -1,6 +1,8 @@
 from collections import defaultdict
+from operator import sub
+from functools import reduce
+from typing import List
 
-arr = [1, 2, 3, 4, 5, 5, 6, 7, 3, 3, 2]
 
 prefix_sum = defaultdict(list)
 sums = 0
