@@ -11,4 +11,3 @@ for _ in range(noOfServers):
     for _ in range(noOfConnections):
         connections.append(list(map(int, input().split())))
     print(connections)
-    print(dfs())

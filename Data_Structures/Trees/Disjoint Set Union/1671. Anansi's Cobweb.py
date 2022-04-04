@@ -1,7 +1,4 @@
-from email.policy import default
-
 from collections import defaultdict
-from msilib.schema import Component
 N, M = map(int, input().split())
 graph = defaultdict(int)
 components = [N]
